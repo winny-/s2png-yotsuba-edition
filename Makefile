@@ -7,7 +7,7 @@ LIBS = -lgd -lm -L/usr/local/lib -L/usr/lib -L/lib
 PREFIX = /usr/local/bin
 
 s2png: s2png.c
-	$(CC) $(CFLAGS) s2png.c -o s2png $(INCS) $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) s2png.c -o s2png $(INCS) $(LIBS)
 
 install: s2png
 	mkdir -p $(PREFIX)/bin
