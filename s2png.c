@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include <getopt.h>
 #include <math.h>
+#include <string.h>
 #include <strings.h>
 #include <err.h>
 #include <sysexits.h>
