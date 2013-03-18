@@ -22,7 +22,6 @@
 
 
 #define VERSION_STR ("0.02")
-#define VERSION_DATE ("20130317")
 #define BANNER_HEIGHT 8
 
 static int verbose = 0;
