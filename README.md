@@ -37,7 +37,7 @@ Create `s2png-yotsuba-edition.tar.xz.png`:
 
 Compress `greentexts.txt` using `xz` and create `greentexts.txt.xz.png` with banner ">tfw all my greentexts are not green":
 
-	$ xz -c greentexts.txt | s2png -ve -b '>tfw all my greentexts not green' -o greentexts.txt.xz.png -
+	$ xz -c greentexts.txt | s2png -ve -b '>tfw all my greentexts are not green' -o greentexts.txt.xz.png -
 	- -> greentexts.txt.xz.png
 	Mode:   Encode
 	Width:  200
