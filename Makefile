@@ -3,7 +3,7 @@
 CC = cc
 CFLAGS = -g
 INCS = -I/usr/local/include -I/usr/include
-LIBS = -lgd -lm -L/usr/local/lib -L/usr/lib -L/lib
+LIBS = -lgd -L/usr/local/lib -L/usr/lib -L/lib
 PREFIX = /usr/local/bin
 
 s2png: s2png.c

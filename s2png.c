@@ -11,7 +11,6 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <getopt.h>
-#include <math.h>
 #include <string.h>
 #include <strings.h>
 #include <err.h>
@@ -68,14 +67,9 @@ int filetopng(FILE *fin, FILE *fout, int im_w, char *banner)
 
     fstat(fileno(fin), &fin_stat);
     long data_size = fin_stat.st_size;
-    
-/*
-    // FIXME
-    //int im_h = (data_size) % 3 == 0 ?
-    //    (data_size/3/im_w + BANNER_HEIGHT) : (((data_size+3)/3/im_w) + BANNER_HEIGHT);
-    //printf("data_size %d, im_h %d im_w %d\n", data_size, im_h, im_w);
-*/
-    int im_h = ceil(((float)data_size / (float)im_w / 3.0) + (float)BANNER_HEIGHT);
+
+    int im_w_bytes = im_w * 3;
+    int im_h = ((data_size + im_w_bytes - 1) / im_w_bytes) + BANNER_HEIGHT;  /* ceil((float)data_size / im_w_bytes) + BANNER_HEIGHT */
     im = gdImageCreateTrueColor(im_w, im_h);
 
     unsigned char buf[3];
