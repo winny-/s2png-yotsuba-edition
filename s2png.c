@@ -24,8 +24,6 @@
 #define VERSION_STR ("0.02")
 #define VERSION_DATE ("20130317")
 #define BANNER_HEIGHT 8
-#define MODE_ENCODE 1
-#define MODE_DECODE 2
 
 static int verbose = 0;
 
@@ -140,8 +138,9 @@ int main(int argc, char **argv)
     char *banner = NULL;
     int im_w = 600;
     /* verbose is declared statically at the top of this file. */
-    int mode;
-    int modeset = 0;
+    enum {
+        MODE_UNSET, MODE_ENCODE, MODE_DECODE
+    } mode = MODE_UNSET;
 
     int ch;
     while((ch = getopt(argc, argv, "w:o:hvedb:")) != -1) {
@@ -160,16 +159,14 @@ int main(int argc, char **argv)
                 verbose = 1;
                 break;
             case 'e':
-                if(modeset)
+                if(mode != MODE_UNSET)
                     usage();
                 mode = MODE_ENCODE;
-                modeset = 1;
                 break;
             case 'd':
-                if(modeset)
+                if(mode != MODE_UNSET)
                     usage();
                 mode = MODE_DECODE;
-                modeset = 1;
                 break;
             case 'b':
                 banner = optarg;
@@ -193,11 +190,11 @@ int main(int argc, char **argv)
     if(!use_stdin && access(in_fn, R_OK) < 0)
         err(EX_NOINPUT, "%s", in_fn);
 
-    if(!modeset && use_stdin) {
+    if(mode == MODE_UNSET && use_stdin) {
         fprintf(stderr, "To use stdin, you MUST specify -e or -d.\n");
         exit(EX_USAGE);
     }
-    if(!modeset)
+    if(mode == MODE_UNSET)
         mode = is_png_file(in_fn) ? MODE_DECODE : MODE_ENCODE;
 
     if(mode == MODE_DECODE && out_fn == NULL) {
