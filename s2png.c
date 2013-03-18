@@ -216,7 +216,7 @@ int main(int argc, char **argv)
             fprintf(stderr, "warn: file `%s' will be saved as `%s'\n", in_fn, out_fn);
         }
     } else if(mode == MODE_ENCODE && out_fn == NULL) {
-        out_fn = calloc(1, sizeof(char) * sizeof(in_fn) + 4);
+        out_fn = calloc(1, sizeof(char) * strlen(in_fn) + sizeof(".png"));
         strcpy(out_fn, in_fn);
         strcat(out_fn, ".png");
     }
