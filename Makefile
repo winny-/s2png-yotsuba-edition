@@ -2,8 +2,8 @@
 # $ make CC=gcc CFLAGS=-02
 CC = cc
 CFLAGS = -g
-INCS = `libpng-config --cflags` -I/usr/local/include -I/usr/include
-LIBS = `libpng-config --libs` -lgd -lm -L/usr/local/lib -L/usr/lib -L/lib
+INCS = -I/usr/local/include -I/usr/include
+LIBS = -lgd -lm -L/usr/local/lib -L/usr/lib -L/lib
 PREFIX = /usr/local/bin
 
 s2png: s2png.c
