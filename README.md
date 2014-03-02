@@ -1,6 +1,8 @@
 s2png yotsuba edition
 =====================
 
+[![Build Status](https://travis-ci.org/winny-/s2png-yotsuba-edition.png?branch=master)](https://travis-ci.org/winny-/s2png-yotsuba-edition)
+
 Why?
 ----
 The [upstream sources](http://s2png.sourceforge.net/) have been untouched for seven years. Its `exists` function made me cross. It didn't handle Unix pipes. Heck, it didn't *even* compile. I saw that some people from [/g/](https://boards.4chan.org/g/) [got it working](https://github.com/dbohdan/s2png), but it feels rough.
